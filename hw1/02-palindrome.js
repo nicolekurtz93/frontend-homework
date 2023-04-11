@@ -18,6 +18,10 @@ function handleInput() {
     palindromeText.style.color = 'red';
     return;
   }
+  if (elem.value === '' || elem.value === null) {
+    palindromeText.textContent = '';
+    return;
+  }
   const stringVersion = elem.value.toString();
   const stringReversed = reverseString(stringVersion);
   if (elem.value > 0 && stringReversed === stringVersion) {
