@@ -4,14 +4,6 @@ const palindromeText = document.createElement('p');
 palindromeText.textContent = '';
 resultDiv.appendChild(palindromeText);
 
-function reverseString(stringToReverse) {
-  let reversedString = '';
-  for (let i = stringToReverse.length - 1; i >= 0; i -= 1) {
-    reversedString += stringToReverse[i];
-  }
-  return reversedString;
-}
-
 function handleInput() {
   if (Number.isNaN(elem.value)) {
     palindromeText.textContent = 'Palindrome must be a number. Try again.';
@@ -23,7 +15,7 @@ function handleInput() {
     return;
   }
   const stringVersion = elem.value.toString();
-  const stringReversed = reverseString(stringVersion);
+  const stringReversed = stringVersion.split('').reverse('').join('');
   if (elem.value > 0 && stringReversed === stringVersion) {
     palindromeText.textContent = 'Yes. This is a palindrome!';
     palindromeText.style.color = 'green';
