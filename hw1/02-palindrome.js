@@ -7,7 +7,7 @@ resultDiv.appendChild(palindromeText);
 function handleInput() {
   if (Number.isNaN(elem.value)) {
     palindromeText.textContent = 'Palindrome must be a number. Try again.';
-    palindromeText.style.color = 'red';
+    palindromeText.classList = 'text-danger';
     return;
   }
   if (elem.value === '' || elem.value === null) {
@@ -18,10 +18,10 @@ function handleInput() {
   const stringReversed = stringVersion.split('').reverse('').join('');
   if (elem.value > 0 && stringReversed === stringVersion) {
     palindromeText.textContent = 'Yes. This is a palindrome!';
-    palindromeText.style.color = 'green';
+    palindromeText.classList = 'text-success';
   } else {
     palindromeText.textContent = 'No. Try again.';
-    palindromeText.style.color = 'red';
+    palindromeText.classList = 'text-danger';
   }
 }
 
