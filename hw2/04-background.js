@@ -13,23 +13,26 @@ function setBackgroundColor() {
 }
 
 function handleButtonSubmission(e) {
-  const usrInput = Input.value;
-  if (isNaN(usrInput) || usrInput === '') {
-    e.preventDefault();
-    alert('Please enter a number greater than zero.');
-    return;
-  }
   if (Button.innerText === 'Start') {
+    const usrInput = Input.value;
+    if (isNaN(usrInput) || usrInput === '') {
+      e.preventDefault();
+      alert('Please enter a number greater than zero.');
+      return;
+    }
     Button.innerText = 'Stop';
-    Button.classList = 'btn btn-danger';
-    IntervalId = setInterval(setBackgroundColor, usrInput);
+    Button.classList = 'btn btn-danger mt-3';
+    IntervalId = setInterval(setBackgroundColor, usrInput * 1000);
   } else {
     clearInterval(IntervalId);
     IntervalId = null;
     Button.innerText = 'Start';
-    Button.classList = 'btn btn-primary';
-    Body.style.backgroundColor = '#7160d9';
+    Button.classList = 'btn btn-primary mt-3';
   }
 }
+
+window.addEventListener('load', () => {
+  IntervalId = setInterval(setBackgroundColor, 3000);
+});
 
 Button.addEventListener('click', handleButtonSubmission);
