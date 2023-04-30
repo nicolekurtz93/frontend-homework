@@ -12,11 +12,11 @@ function setBackgroundColor() {
   Body.style.backgroundColor = `rgba(${val1}, ${val2}, ${val3}, 0.3)`;
 }
 
-function handleButtonSubmission(e) {
+function handleButtonSubmission(event) {
   if (Button.innerText === 'Start') {
     const usrInput = Input.value;
     if (isNaN(usrInput) || usrInput === '') {
-      e.preventDefault();
+      event.preventDefault();
       alert('Please enter a number greater than zero.');
       return;
     }
