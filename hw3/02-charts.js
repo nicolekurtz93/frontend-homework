@@ -32,7 +32,7 @@ const url = 'https://thronesapi.com/api/v2/Characters';
 const renderChart = () => {
   const donutChart = document.querySelector('.donut-chart');
 
-  new Chart(donutChart, {
+  const chart = new Chart(donutChart, {
     type: 'doughnut',
     data: {
       labels: ['label', 'label', 'label', 'label'],
@@ -47,6 +47,19 @@ const renderChart = () => {
       ],
     },
   });
+};
+
+const asyncGetThrone = async () => {
+  const promise = new Promise((resolve, reject) => {
+
+  });
+  try {
+    const response = await promise;
+    console.log(response);
+
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 renderChart();
