@@ -5,9 +5,6 @@ const borderColors = [
 ];
 // url for the Thrones API
 const url = 'https://thronesapi.com/api/v2/Characters';
-// const houseNames = new Map([
-//   ['Targaryen', 0], ['Tyrell', 0], ['Arryn', 0], ['GreyJoy', 0], ['Tully', 0], ['Stark', 0],
-//   ['Baratheon', 0], ['Frey', 0]]);
 const houseNames = new Map([]);
 
 function setChartColors(numberOfItems) {
@@ -37,47 +34,59 @@ const renderChart = () => {
         },
       ],
     },
+    responsive: true,
   });
 };
 
-const asyncGetThrone = async () => {
-  try {
-    const response = await fetch(url);
-    const jsonData = await response.json();
-    console.log(jsonData);
-    return jsonData;
-  } catch (error) {
-    console.log('Error', error);
-    return null;
-  }
-};
-
-const doesElementMatchAnotherHouse = (element) => {
-  houseNameKeys = Array.from(houseNames.keys());
-  houseNameKeys.forEach((house) => {
-
+const cleanGotData = (data) => {
+  data.forEach((element) => {
+    if (element.lastName === 'Targaryan') {
+      element.lastName = 'Targaryen';
+    }
   });
+  return data;
 };
 
 const parseThronesData = (thronesData) => {
-  thronesData.forEach((element) => {
+  const cleanThronesData = cleanGotData(thronesData);
+  cleanThronesData.forEach((element) => {
     if (houseNames.has(element.lastName)) {
       houseNames.set(element.lastName, houseNames.get(element.lastName) + 1);
     } else if (element.lastName !== '' && element.lastName !== 'None' && element.lastName !== 'Unknown') {
       houseNames.set(element.lastName, 1);
-    }
-  });
-  const arrayOfMap = Array.from(houseNames);
-  console.log(arrayOfMap);
-  arrayOfMap.forEach((element) => {
-    if (element[1] == 1) {
-      doesElementMatchAnotherHouse(element);
+    } else if (houseNames.has('Unknown')) {
+      houseNames.set('Unknown', houseNames.get('Unknown') + 1);
+    } else {
+      houseNames.set('Unknown', 1);
     }
   });
 
   renderChart();
 };
 
-renderChart();
-asyncGetThrone()
-  .then((thronesData) => parseThronesData(thronesData));
+const asyncGetThrone = async () => {
+  await fetch(url)
+    .then((response) => response.json())
+    .then((thronesData) => parseThronesData(thronesData))
+    .then(renderChart())
+    .catch((error) => {
+      console.log(`There was an error: ${error}`);
+      document.querySelector('canvas').remove();
+      const div = document.querySelector('#canvas-div');
+      const errorText = document.createElement('p');
+      errorText.textContent = 'Failed to load Game of Thrones data. Try Again';
+      errorText.className = 'text-danger';
+      errorText.style.textAlign = 'center';
+      errorText.style.fontWeight = 'bolder';
+      div.appendChild(errorText);
+      return null;
+    });
+};
+
+// I found that my chart doesn't load properly at resize
+// This is my current solution to resolve
+['load', 'resize'].forEach((event) => {
+  window.addEventListener(event, () => {
+    asyncGetThrone();
+  });
+});
