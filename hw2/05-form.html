@@ -1,20 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>05 - Form</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
-    <script defer src="05-form.js"></script>
-  </head>
-  <body>
-    <main>
-      <form>
-        <h1>Exercise 05 - Form</h1>
-      </form>
-    </main>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>05 - Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+  <script defer src="05-form.js"></script>
+</head>
+
+<body>
+  <main>
+    <div class="jumbotron d-flex align-items-center bg-dark w-100 vh-100 px-2">
+      <main class="container col-lg-5 col-md-6 col-sm-8 bg-light">
+        <form class="col-12">
+          <h1 class="my-4 text-center">Exercise 05 - Form</h1>
+          <div class="row m-1">
+            <label for="name" class="col-md-4 fw-bold">Full Name:</label>
+          </div>
+          <div class="row mx-2 my-2">
+              <input type="text" id="name" name="name" class="form-control" />
+          </div>
+          <div class="row m-1">
+            <label for="email" class="col-md-4 fw-bold">Email:</label>
+            </div>
+          <div class="row mx-2 my-2">
+              <input type="email" id="email" name="email" class="form-control" />
+            </div>
+          <div class="dropdown mx-2 mb-4">
+            <label for="registration" class="col-md-6 m-2 fw-bold">Registration Status:</label>
+            <select name="registration" id="registration" name="registration" class="form-select">
+              <option value="No selection" selected="true" disabled="true">Choose an Option</option>
+              <option value="registered">Registered</option>
+              <option value="not registered">Not Registered</option>
+            </select>
+          </div>
+          <fieldset class="row m-1 mb-3">
+            <legend for="courses" class="col-12 h6 fw-bold">
+              Have you taken any of the following courses?
+            </legend>
+            <div class="form-check mx-3">
+              <input class="form-check-input" type="checkbox" name="courses" id="languagesInput" />
+              <label class="col-10" type="checkbox" name="courses" id="languagesLabel" for="languagesInput">
+                Programming Languages
+              </label>
+            </div>
+            <div class="form-check mx-3">
+              <input type="checkbox" name="courses" id="operatingInput" class="form-check-input" />
+              <label type="checkbox" name="courses" id="operatingLabel" class="form-check-label" for="operatingInput">
+                Operating Systems
+              </label>
+            </div>
+            <div class="form-check mx-3">
+              <input type="checkbox" name="courses" id="fullStackInput" class="form-check-input" />
+              <label type="checkbox" name="courses" id="fullStackLabel" class="form-check-label" for="fullStackInput">
+                Full Stack Web Development
+              </label>
+            </div>
+          </fieldset>
+          <div class="row mx-2 mb-4">
+            <label type="text" name="comment" id="commentlabel" class="form-check-label fw-bold mb-2" for="commentinput">Anything else?</label>
+            <textarea type="text" name="comment" id="commentinput" class="form-check-label"></textarea>
+          </div>
+          <div id="buttons" class="text-center d-flex justify-content-center m-2 mb-4">
+            <button type="submit" name="submit" value="Submit" class="btn btn-primary mx-1 w-100">
+              Submit
+            </button>
+            <button type="reset" name="reset" value="Reset" class="btn btn-secondary mx-1 w-100">
+              Reset
+            </button>
+          </div>
+        </form>
+        </form>
+      </main>
+</body>
+
 </html>
