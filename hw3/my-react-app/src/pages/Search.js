@@ -12,7 +12,6 @@ const Search = (props) => {
         if (event.target.value === '') {
             return;
         }
-        console.log(event.target.value)
         const result = thorneData.filter((item) => {
             return item.fullName.toLowerCase().includes(event.target.value.toLowerCase())
         })
