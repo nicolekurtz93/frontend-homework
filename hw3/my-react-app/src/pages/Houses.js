@@ -1,9 +1,9 @@
 
 import React from 'react'
 import { Doughnut } from 'react-chartjs-2'
-import '../../index.css'
+import '../index.css'
 import { ArcElement, Chart, Legend } from 'chart.js'
-import { setChartColors } from '../Utils';
+import { setChartColors } from './Utils';
 Chart.register(ArcElement, Legend);
 
 const Houses = (props) => {
@@ -40,7 +40,7 @@ const Houses = (props) => {
             <img
               id="loading"
               className="mb-5"
-              src={require('../../loader.gif')}
+              src={require('../loader.gif')}
               alt="gif of a loading element"
               width="400px"
             />
