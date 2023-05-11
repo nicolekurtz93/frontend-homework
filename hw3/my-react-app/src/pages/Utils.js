@@ -27,3 +27,15 @@ const cleanGotData = (data) => {
     })
     return data;
 }
+
+export function setChartColors(numberOfItems) {
+  console.log(numberOfItems)
+  const backgroundColors = [];
+  for (let index = 0; index < numberOfItems; (index += 1)) {
+    const val1 = Math.random() * 255;
+    const val2 = Math.random() * 255;
+    const val3 = Math.random() * 255;
+    backgroundColors.push(`rgba(${val1}, ${val2}, ${val3}, 0.8)`);
+  }
+  return backgroundColors;
+}

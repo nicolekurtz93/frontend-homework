@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import NavBar from './Nav'
 const Home = () => {
   return (
-    <><NavBar /><div className='h-100'>
+    <><div className='h-100'>
       <h1 className='text-center p-4'>
         Welcome to the Game Of Thrones Website!
       </h1>

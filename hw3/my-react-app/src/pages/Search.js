@@ -2,14 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import NavBar from './Nav'
-import { fetchData } from './Utils';
 
-const Search = () => {
-    const [data, setData] = useState([])
-
-    useEffect(() => {
-        fetchData().then(data => setData(data))
-    }, [])
+const Search = (props) => {
+    const {thorneData} = props;
 
     const handleChange = (event) => {
         let resultDiv = document.getElementById('searchResult');
@@ -18,7 +13,7 @@ const Search = () => {
             return;
         }
         console.log(event.target.value)
-        const result = data.filter((item) => {
+        const result = thorneData.filter((item) => {
             return item.fullName.toLowerCase().includes(event.target.value.toLowerCase())
         })
         if (result.length === 0) {
@@ -43,7 +38,7 @@ const Search = () => {
         });
     }
     return (
-        <><NavBar /><div className='h-100 flex justify-content-center'>
+        <><div className='h-100 flex justify-content-center'>
             <div className="row w-100">
                 <h1 className='text-center p-4 w-100'>
                     Character Search
