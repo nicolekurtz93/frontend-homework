@@ -9,12 +9,12 @@ function styleThroneDiv() {
   const divToStyle = document.createElement('div');
   divToStyle.className = 'gameOfThrones m-2 p-2 justify-content-center';
   divToStyle.onmousemove = () => {
-    this.style.backgroundColor = '#13415b';
-    this.style.color = 'white';
+    divToStyle.style.backgroundColor = '#13415b';
+    divToStyle.style.color = 'white';
   };
   divToStyle.onmouseout = () => {
-    this.style.backgroundColor = '';
-    this.style.color = 'black';
+    divToStyle.style.backgroundColor = '';
+    divToStyle.style.color = 'black';
   };
   divToStyle.style.display = 'flex';
   divToStyle.style.flexWrap = 'Wrap';

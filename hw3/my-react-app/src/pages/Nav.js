@@ -21,10 +21,9 @@ export const Navbar = (props) => {
             </ul>
         </nav><BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route index element={<Home />} />
-                    <Route path='/houses' element={<Houses throneData={throneData} />} />
-                    <Route path='/search' element={<Search thorneData={throneData} />} />
+                    <Route title='Game Of Thrones' path='/' element={<Home />} />
+                    <Route title='Houses' path='/houses' element={<Houses throneData={throneData} />} />
+                    <Route title='Search' path='/search' element={<Search thorneData={throneData} />} />
                 </Routes>
             </BrowserRouter></>
     );

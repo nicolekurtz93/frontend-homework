@@ -68,7 +68,6 @@ const asyncGetThrone = async () => {
   await fetch(url)
     .then((response) => response.json())
     .then((thronesData) => parseThronesData(thronesData))
-    .then(renderChart())
     .catch((error) => {
       console.log(`There was an error: ${error}`);
       document.querySelector('canvas').remove();
@@ -85,8 +84,4 @@ const asyncGetThrone = async () => {
 
 // I found that my chart doesn't load properly at resize
 // This is my current solution to resolve
-['load', 'resize'].forEach((event) => {
-  window.addEventListener(event, () => {
-    asyncGetThrone();
-  });
-});
+asyncGetThrone();
